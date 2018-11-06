@@ -35,7 +35,11 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    { src: '~plugins/vuetify', ssr: true },
+    { src: '~plugins/notice', ssr: true },
+    { src: '~plugins/request', ssr: true },
+    { src: '~plugins/token', ssr: true },
+    { src: '~plugins/cookie', ssr: true }
   ],
 
   /*

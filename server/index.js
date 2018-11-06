@@ -1,6 +1,7 @@
-
 const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
 const consola = require('consola')
+const AutoRoutes = require('./autoRoutes')
 const { Nuxt, Builder } = require('nuxt')
 
 const app = new Koa()
@@ -20,6 +21,10 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  app.use(bodyParser())
+
+  AutoRoutes.auto(app)
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
