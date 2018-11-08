@@ -167,8 +167,7 @@
               flat
               block
               large
-              class="mt-4"
-              to="/about">南国征信欢迎您的加入</v-btn>
+              class="mt-4">南国征信欢迎您的加入</v-btn>
           </v-flex>
         </v-card>
       </v-flex>

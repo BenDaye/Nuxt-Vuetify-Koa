@@ -1,6 +1,6 @@
 /* eslint-disable */
 // import { login, logout, getUserInfo, register } from '@/api/user'
-// import { setToken, getToken, getVcodeTimer, setVcodeTimer } from '@/libs/util'
+// import { getVcodeTimer, setVcodeTimer } from '~/utils/util'
 
 export const state = () => ({
   userName: '',
@@ -8,36 +8,36 @@ export const state = () => ({
   avatorImgPath: '',
   // token: getToken(),
   info: null,
-  access: ['admin'],
+  access: ['admin']
   // vcodeTimerForLogin: getVcodeTimer('vcodeTimerForLogin'),
   // vcodeTimerForRegister: getVcodeTimer('vcodeTimerForRegister')
 })
 
-// export const mutations = {
-//   setAvator(state, avatorPath) {
-//     state.avatorImgPath = avatorPath
-//   },
-//   setUserId(state, id) {
-//     state.userId = id
-//   },
-//   setUserName(state, name) {
-//     state.userName = name
-//   },
-//   setAccess(state, access) {
-//     state.access = access
-//   },
-//   setToken(state, token) {
-//     state.token = token
-//     setToken(token)
-//   },
-//   setTimer(state, { type, timer }) {
-//     state[type] = timer
-//     setVcodeTimer(type, timer)
-//   },
-//   setInfo(state, info) {
-//     state.info = info
-//   }
-// }
+export const mutations = {
+  setAvator(state, avatorPath) {
+    state.avatorImgPath = avatorPath
+  },
+  setUserId(state, id) {
+    state.userId = id
+  },
+  setUserName(state, name) {
+    state.userName = name
+  },
+  setAccess(state, access) {
+    state.access = access
+  },
+  setToken(state, token) {
+    state.token = token
+    setToken(token)
+  },
+  setTimer(state, { type, timer }) {
+    state[type] = timer
+    setVcodeTimer(type, timer)
+  },
+  setInfo(state, info) {
+    state.info = info
+  }
+}
 
 // export const actions = {
 //   // 登录

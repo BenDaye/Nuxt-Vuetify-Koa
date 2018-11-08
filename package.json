@@ -27,7 +27,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
     "normalize.css": "^8.0.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.2.0",
     "qs": "^6.5.2",
     "querystring": "^0.2.0",
     "vuetify": "^1.2.4"

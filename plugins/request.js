@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import qs from 'qs'
+import get from 'lodash.get'
 import { Http } from '../utils/Http'
 
 const plugin = {
@@ -88,8 +89,18 @@ const plugin = {
       if (!userName || !type) {
         throw new Error('缺少userName或type')
       }
-      const res = await this.$http.get(`/user/vcode?${qs.stringify(args)}`)
-      return res
+      const { data } = await this.$http.get(`/user/vcode?${qs.stringify(args)}`)
+      const { code, message } = get(data, ['data', 'data'])
+      if (code !== 0) {
+        this.msgError(message)
+        throw new Error(message)
+      } else {
+        this.msgSuccess(message)
+        return {
+          code,
+          message
+        }
+      }
     }
 
     Vue.mixin({

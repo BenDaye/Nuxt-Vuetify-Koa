@@ -153,7 +153,9 @@ export default {
     // console.log(typeof this.vcodeTimerForRegister);
   },
   methods: {
-    ...mapMutations(['setTimer']),
+    ...mapMutations({
+      setTimer: 'user/setTimer'
+    }),
     ...mapActions(['handleRegister']),
     submit() {
       if (
@@ -180,9 +182,22 @@ export default {
     },
     async getVcodeForRegister() {
       if (this.$refs.formUserName.validate()) {
-        // this.vcodeBtnDisabled = true
-        const res = await this.getCode({ userName: this.userName, type: 1 })
-        console.log('TCL: async getVcodeForRegister -> res', res)
+        this.vcodeBtnDisabled = true
+        const { code } = await this.getCode({
+          userName: this.userName,
+          type: 1
+        })
+        // console.log('TCL: async getVcodeForRegister -> res', res)
+        if (code === 0) {
+          this.setTimer({
+            type: 'vcodeTimerForRegister',
+            timer: new Date()
+          })
+          this.vcodeBtnText = `重新获取(${this.vcodeTimer})`
+          this.handleTimerInterval('vcodeTimerForRegister')
+        } else {
+          this.vcodeBtnDisabled = false
+        }
         // .then(result => {
         //   // console.log("TCL: getVcodeForRegister -> result", result);
         //   if (result.errno === 0) {

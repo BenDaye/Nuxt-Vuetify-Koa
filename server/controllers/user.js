@@ -65,8 +65,12 @@ router.get('/vcode', async (ctx, next) => {
 
 const vcode = async args => {
   const { userName, type } = args
-  const data = await http.get(`/vcode?userName=${userName}&type=${type}`)
-  return data
+  const { errno, errmsg, data } = await http.get(`/vcode?userName=${userName}&type=${type}`)
+  return {
+    errno,
+    errmsg,
+    data
+  }
 }
 
 module.exports = router
